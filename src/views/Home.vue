@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    Start
+    Home
   </div>
 </template>
 
