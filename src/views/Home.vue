@@ -47,6 +47,28 @@
     >
     <label for="check-1" class="form-check-label">ReactJS</label>
   </div>
+  <div class="mt-2">
+    <div class="form-check form-check-inline">
+      <input
+        type="radio"
+        id="radio-1"
+        class="form-check-input"
+        value="prority"
+        v-model="task.status"
+      >
+      <label for="radio-1" class="form-check-label">Priority</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        type="radio"
+        id="radio-2"
+        class="form-check-input"
+        value="nopriority"
+        v-model="task.status"
+      >
+      <label for="radio-2" class="form-check-label">No Priority</label>
+    </div>
+  </div>
 </form>
 <br/>
 <p>
@@ -65,7 +87,8 @@ export default {
     return {
       task: {
         name: '',
-        categories: []
+        categories: [],
+        status: ''
       }
     }
   },
