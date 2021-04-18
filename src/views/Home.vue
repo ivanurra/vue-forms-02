@@ -64,11 +64,18 @@
         id="radio-2"
         class="form-check-input"
         value="nopriority"
-        v-model="task.status"
+        v-model.number="task.status"
       >
       <label for="radio-2" class="form-check-label">No Priority</label>
     </div>
   </div>
+<div class="mt-2">
+  <input 
+    type="number"
+    class="form-control"
+    v-model="task.number"
+    >
+</div>
 </form>
 <br/>
 <p>
@@ -88,7 +95,8 @@ export default {
       task: {
         name: '',
         categories: [],
-        status: ''
+        status: '',
+        number: 0
       }
     }
   },
