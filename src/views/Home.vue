@@ -1,10 +1,10 @@
 <template>
-<form>
+<form @submit.prevent="processForm">
   <input
     type="text"
     class="form-control my-2"
     placeholder="Write your name"
-    v-model="task.name"
+    v-model.trim="task.name"
   >
   <br/>
   <div class="form-check form-check-inline">
@@ -76,6 +76,9 @@
     v-model="task.number"
     >
 </div>
+<button class="btn btn-dark mt-2 btn-block" type="submit">
+  Enter
+</button>
 </form>
 <br/>
 <p>
@@ -100,5 +103,10 @@ export default {
       }
     }
   },
+  methods: {
+    processForm() {
+      console.log(this.task)
+    }
+  }
 }
 </script>
