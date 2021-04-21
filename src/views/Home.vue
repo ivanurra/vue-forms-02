@@ -115,6 +115,12 @@ export default {
         return
       }
       console.log('Not empty')
+      this.task = {
+        name: '',
+        categories: [],
+        status: '',
+        number: 0
+      }
     }
   },
   computed: {
