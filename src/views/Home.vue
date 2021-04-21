@@ -76,7 +76,11 @@
     v-model="task.number"
     >
 </div>
-<button class="btn btn-dark mt-2 btn-block" type="submit">
+<button 
+  class="btn btn-dark mt-2 btn-block"
+  type="submit"
+  :disabled="blocked"
+>
   Enter
 </button>
 </form>
@@ -106,6 +110,16 @@ export default {
   methods: {
     processForm() {
       console.log(this.task)
+      if (this.task.name.trim() === "") {
+        console.log('Empty')
+        return
+      }
+      console.log('Not empty')
+    }
+  },
+  computed: {
+    blocked(){
+      return this.task.name.trim() === "" ? true : false
     }
   }
 }
