@@ -24,18 +24,25 @@
         </td>
         <td>{{item.status}}</td>
         <td>{{item.number}}</td>
-        <td>Action</td>
+        <td>
+            <button class="btn btn-danger btn-sm" @click="deleteTasks(item.id)">
+                Delete
+            </button>
+        </td>
       </tr>
     </tbody>
   </table>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState, mapActions} from 'vuex'
 
 export default {
     computed: {
         ...mapState(['tasks']),
+    },
+    methods: {
+        ...mapActions(['deleteTasks'])
     }
 };
 </script>
