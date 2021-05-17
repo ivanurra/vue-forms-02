@@ -9,7 +9,9 @@
 </template>
 
 <script>
-import Input from '../components/Input'
+import Input from '../components/Input';
+import {mapActions} from 'vuex';
+const shortid = require('shortid');
 
 export default {
   name: "Home",
@@ -28,6 +30,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['setTasks']),
     processForm() {
       console.log(this.task);
       if (this.task.name.trim() === "") {
@@ -35,6 +38,12 @@ export default {
         return;
       }
       console.log("Not empty");
+
+      this.task.id = shortid.generate();
+      console.log(this.task.id);
+
+      this.setTasks(this.task)
+
       this.task = {
         name: "",
         categories: [],
