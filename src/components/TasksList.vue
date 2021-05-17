@@ -28,6 +28,17 @@
             <button class="btn btn-danger btn-sm" @click="deleteTasks(item.id)">
                 Delete
             </button>
+            <router-link
+            class="btn btn-warning ml-2 btn-sm"
+            :to="{
+                name: 'Edit',
+                params: {
+                    id: item.id
+                }
+            }"
+            >
+                Edit
+            </router-link>
         </td>
       </tr>
     </tbody>
