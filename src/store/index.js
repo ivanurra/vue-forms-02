@@ -18,6 +18,9 @@ export default createStore({
     },
     delete(state, payload) {
       state.tasks = state.tasks.filter(item => item.id !== payload)
+    },
+    task(state, payload) {
+      state.tasks = state.tasks.find(item => item.id === payload)
     }
   },
   actions: {
@@ -26,6 +29,9 @@ export default createStore({
     },
     deleteTasks({ commit }, id) {
       commit('delete', id)
+    },
+    setTask({ commit }, id) {
+      commit('task', id)
     }
   },
   modules: {
