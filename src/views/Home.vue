@@ -3,20 +3,20 @@
    <Input :task="task" />
   </form>
   <br />
-  <p>
-    {{ task }}
-  </p>
+  <Tasks-list />
 </template>
 
 <script>
 import Input from '../components/Input';
 import {mapActions} from 'vuex';
+import TasksList from '../components/TasksList.vue';
 const shortid = require('shortid');
 
 export default {
   name: "Home",
   components: {
     Input,
+    TasksList,
   },
   data() {
     return {
@@ -45,6 +45,7 @@ export default {
       this.setTasks(this.task)
 
       this.task = {
+        id:'',
         name: "",
         categories: [],
         status: "",

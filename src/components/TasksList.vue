@@ -1,0 +1,35 @@
+<template>
+{{tasks}}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Status</th>
+        <th scope="col">Number</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in tasks" :key="item.id">
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.name}}</td>
+        <td>{{item.categories}}</td>
+        <td>{{item.status}}</td>
+        <td>{{item.number}}</td>
+        <td>Action</td>
+      </tr>
+    </tbody>
+  </table>
+</template>
+
+<script>
+import {mapState} from 'vuex'
+
+export default {
+    computed: {
+        ...mapState(['tasks']),
+    }
+};
+</script>
