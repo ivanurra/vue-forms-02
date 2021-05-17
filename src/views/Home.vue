@@ -1,128 +1,52 @@
 <template>
-<form @submit.prevent="processForm">
-  <input
-    type="text"
-    class="form-control my-2"
-    placeholder="Write your name"
-    v-model.trim="task.name"
-  >
-  <br/>
-  <div class="form-check form-check-inline">
-    <input 
-    type="checkbox"
-    id="check-1"
-    class="form-check-input"
-    v-model="task.categories"
-    value="JavaScript"
-    >
-    <label for="check-2" class="form-check-label">JavaScript</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input 
-    type="checkbox"
-    id="check-1"
-    class="form-check-input"
-    v-model="task.categories"
-    value="NodeJS"
-    >
-    <label for="check-3" class="form-check-label">NodeJS</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input 
-    type="checkbox"
-    id="check-1"
-    class="form-check-input"
-    v-model="task.categories"
-    value="VueJS"
-    >
-    <label for="check-4" class="form-check-label">VueJS</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input 
-    type="checkbox"
-    id="check-1"
-    class="form-check-input"
-    v-model="task.categories"
-    value="ReactJS"
-    >
-    <label for="check-1" class="form-check-label">ReactJS</label>
-  </div>
-  <div class="mt-2">
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        id="radio-1"
-        class="form-check-input"
-        value="prority"
-        v-model="task.status"
-      >
-      <label for="radio-1" class="form-check-label">Priority</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        id="radio-2"
-        class="form-check-input"
-        value="nopriority"
-        v-model.number="task.status"
-      >
-      <label for="radio-2" class="form-check-label">No Priority</label>
-    </div>
-  </div>
-<div class="mt-2">
-  <input 
-    type="number"
-    class="form-control"
-    v-model="task.number"
-    >
-</div>
-<button 
-  class="btn btn-dark mt-2 btn-block"
-  type="submit"
-  :disabled="blocked"
->
-  Enter
-</button>
-</form>
-<br/>
-<p>
-  {{ task }}
-</p>
+  <form @submit.prevent="processForm">
+   <Input :task="task" />
+  </form>
+  <br />
+  <p>
+    {{ task }}
+  </p>
 </template>
 
 <script>
+import Input from '../components/Input'
+
 export default {
-  name: 'Home',
+  name: "Home",
+  components: {
+    Input,
+  },
   data() {
     return {
       task: {
+        id: '',
         name: '',
         categories: [],
         status: '',
-        number: 0
-      }
-    }
+        number: 0,
+      },
+    };
   },
   methods: {
     processForm() {
-      console.log(this.task)
+      console.log(this.task);
       if (this.task.name.trim() === "") {
-        console.log('Empty')
-        return
+        console.log("Empty");
+        return;
       }
-      console.log('Not empty')
+      console.log("Not empty");
       this.task = {
-        name: '',
+        name: "",
         categories: [],
-        status: '',
-        number: 0
-      }
-    }
+        status: "",
+        number: 0,
+      };
+    },
   },
   computed: {
-    blocked(){
-      return this.task.name.trim() === "" ? true : false
-    }
-  }
-}
+    blocked() {
+      return this.task.name.trim() === "" ? true : false;
+    },
+  },
+};
 </script>
