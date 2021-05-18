@@ -1,4 +1,5 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
+import router from '../router';
 
 export default createStore({
   state: {
@@ -20,7 +21,15 @@ export default createStore({
       state.tasks = state.tasks.filter(item => item.id !== payload)
     },
     task(state, payload) {
+      if(!state.tasks.find(item => item.id === payload)){
+        router.push('/')
+        return
+      }
       state.tasks = state.tasks.find(item => item.id === payload)
+    },
+    update(state, payload){
+      state.tasks = state.tasks.map(item => item.id === payload.id ? payload : item)
+      router.push('/')
     }
   },
   actions: {
@@ -32,6 +41,9 @@ export default createStore({
     },
     setTask({ commit }, id) {
       commit('task', id)
+    },
+    updateTask({ commit }, task){
+      commit('update', task)
     }
   },
   modules: {
