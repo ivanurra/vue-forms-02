@@ -33,6 +33,14 @@ export default createStore({
     }
   },
   actions: {
+    loadLocalStorage({commit}) {
+      if(loadLocalStorage.getItem('tasks')) {
+        const tasks = JSON.parse(loadLocalStorage.getItem('tasks'))
+        commit('load', tasks)
+        return
+      }
+      localStorage.setItem('tasks')
+    },
     setTasks({commit}, task) {
       commit('set', task)
     },
