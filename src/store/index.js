@@ -13,12 +13,16 @@ export default createStore({
     },
   },
   mutations: {
+    load(state, payload) {
+      state.tasks = payload;
+    },
     set(state, payload) {
       state.tasks.push(payload)
-      console.log(state.tasks)
+      localStorage.setItem('tasks', JSON.stringify(state.tasks))
     },
     delete(state, payload) {
       state.tasks = state.tasks.filter(item => item.id !== payload)
+      localStorage.setItem('tasks', JSON.stringify(state.tasks))
     },
     task(state, payload) {
       if(!state.tasks.find(item => item.id === payload)){
@@ -30,6 +34,7 @@ export default createStore({
     update(state, payload){
       state.tasks = state.tasks.map(item => item.id === payload.id ? payload : item)
       router.push('/')
+      localStorage.setItem('tasks', JSON.stringify(state.tasks))
     }
   },
   actions: {
@@ -39,7 +44,7 @@ export default createStore({
         commit('load', tasks)
         return
       }
-      localStorage.setItem('tasks')
+      localStorage.setItem('tasks', JSON.stringify([]))
     },
     setTasks({commit}, task) {
       commit('set', task)

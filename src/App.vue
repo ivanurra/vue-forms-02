@@ -6,11 +6,18 @@
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue'
+import {mapActions} from 'vuex';
+import Navbar from './components/Navbar.vue';
 
 export default {
   components: { 
     Navbar 
     },
+  methods: {
+    ...mapActions(['loadLocalStorage'])
+    },
+  created() {
+      this.loadLocalStorage()
+    }
   }
 </script>
